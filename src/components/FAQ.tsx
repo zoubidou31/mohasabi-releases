@@ -7,8 +7,11 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqItems = [
   { qKey: 'faq.offline.q' as const, aKey: 'faq.offline.a' as const },
-  { qKey: 'faq.latest.q' as const, aKey: 'faq.latest.a' as const },
+  { qKey: 'faq.requirements.q' as const, aKey: 'faq.requirements.a' as const },
   { qKey: 'faq.data.q' as const, aKey: 'faq.data.a' as const },
+  { qKey: 'faq.backup.q' as const, aKey: 'faq.backup.a' as const },
+  { qKey: 'faq.free.q' as const, aKey: 'faq.free.a' as const },
+  { qKey: 'faq.latest.q' as const, aKey: 'faq.latest.a' as const },
   { qKey: 'faq.support.q' as const, aKey: 'faq.support.a' as const },
 ] as const;
 

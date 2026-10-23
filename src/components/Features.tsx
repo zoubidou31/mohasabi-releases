@@ -1,39 +1,60 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
-import { Database, FileText, LayoutDashboard, WifiOff } from 'lucide-react';
+import {
+  Boxes,
+  Building2,
+  FileText,
+  Languages,
+  PieChart,
+  ShieldCheck,
+  Wallet,
+} from 'lucide-react';
 import type { TranslationKey } from '../i18n/translations';
 
-const lead = {
-  icon: WifiOff,
-  titleKey: 'features.offline.title',
-  descKey: 'features.offline.desc',
-} as const satisfies {
+type Feature = {
   icon: React.ComponentType<{ className?: string }>;
   titleKey: TranslationKey;
   descKey: TranslationKey;
 };
 
+const lead = {
+  icon: FileText,
+  titleKey: 'features.documents.title',
+  descKey: 'features.documents.desc',
+} as const satisfies Feature;
+
 const secondary = [
   {
-    icon: FileText,
-    titleKey: 'features.invoices.title',
-    descKey: 'features.invoices.desc',
+    icon: Building2,
+    titleKey: 'features.partners.title',
+    descKey: 'features.partners.desc',
   },
   {
-    icon: Database,
+    icon: Wallet,
+    titleKey: 'features.debts.title',
+    descKey: 'features.debts.desc',
+  },
+  {
+    icon: Boxes,
+    titleKey: 'features.stock.title',
+    descKey: 'features.stock.desc',
+  },
+  {
+    icon: PieChart,
+    titleKey: 'features.reports.title',
+    descKey: 'features.reports.desc',
+  },
+  {
+    icon: Languages,
+    titleKey: 'features.languages.title',
+    descKey: 'features.languages.desc',
+  },
+  {
+    icon: ShieldCheck,
     titleKey: 'features.localData.title',
     descKey: 'features.localData.desc',
   },
-  {
-    icon: LayoutDashboard,
-    titleKey: 'features.ui.title',
-    descKey: 'features.ui.desc',
-  },
-] as const satisfies ReadonlyArray<{
-  icon: React.ComponentType<{ className?: string }>;
-  titleKey: TranslationKey;
-  descKey: TranslationKey;
-}>;
+] as const satisfies readonly Feature[];
 
 export const Features: React.FC = () => {
   const { t } = useLanguage();
@@ -78,7 +99,7 @@ export const Features: React.FC = () => {
           >
             <ul className="divide-y divide-neutral-200 border-y border-neutral-200">
               {secondary.map((feature) => (
-                <li key={feature.titleKey} className="flex gap-5 py-7">
+                <li key={feature.titleKey} className="flex gap-5 py-6">
                   <span className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-primary-light text-primary border border-primary/10">
                     <feature.icon className="w-6 h-6" aria-hidden="true" />
                   </span>

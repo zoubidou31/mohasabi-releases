@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { siteConfig } from '../config/siteConfig';
 import { GithubIcon } from './GithubIcon';
-import { FileText, Globe, GitFork, Mail, MessageCircle, Percent } from 'lucide-react';
+import { FileText, Globe, GitFork, Mail, MessageCircle, Percent, ShieldCheck } from 'lucide-react';
 import type { TranslationKey } from '../i18n/translations';
 
 const currentYear = new Date().getFullYear();
@@ -12,6 +12,7 @@ const pageLinks: ReadonlyArray<{ labelKey: TranslationKey; to: string }> = [
   { labelKey: 'footer.links.guide', to: '/guide' },
   { labelKey: 'footer.links.pricing', to: '/pricing' },
   { labelKey: 'footer.links.support', to: '/support' },
+  { labelKey: 'footer.links.privacy', to: '/privacy' },
 ];
 
 const sectionLinks: ReadonlyArray<{
@@ -66,12 +67,11 @@ export const Footer: React.FC = () => {
             >
               <img
                 src={siteConfig.assets.logo}
-                alt=""
+                alt={t('a11y.logoAlt')}
                 className="h-11 w-11 rounded-xl object-contain ring-1 ring-white/15"
                 width={44}
                 height={44}
                 decoding="async"
-                aria-hidden="true"
               />
               <span className="font-bold text-2xl tracking-tight text-white">
                 {siteConfig.app.name}
@@ -171,9 +171,14 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-neutral-500 text-sm text-center md:text-start">
-            &copy; {currentYear} {siteConfig.app.name}. {t('footer.copyright')}
-          </p>
+          <div className="text-center md:text-start">
+            <p className="text-neutral-500 text-sm">
+              &copy; {currentYear} {siteConfig.app.name}. {t('footer.copyright')}
+            </p>
+            <p className="text-neutral-600 text-xs mt-2 max-w-md leading-relaxed">
+              {t('footer.trademark')}
+            </p>
+          </div>
 
           <div className="flex items-center gap-5">
             <Link
@@ -189,6 +194,13 @@ export const Footer: React.FC = () => {
             >
               <FileText className="w-4 h-4" aria-hidden="true" />
               {t('footer.links.guide')}
+            </Link>
+            <Link
+              to="/privacy"
+              className="flex items-center gap-2 text-neutral-500 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded"
+            >
+              <ShieldCheck className="w-4 h-4" aria-hidden="true" />
+              {t('footer.links.privacy')}
             </Link>
             <div className="flex items-center gap-2 text-neutral-500">
               <span>{t('footer.versionLabel')}</span>

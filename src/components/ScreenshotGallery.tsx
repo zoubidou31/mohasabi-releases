@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { siteConfig } from '../config/siteConfig';
-import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BookOpenText, CameraOff, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { TranslationKey } from '../i18n/translations';
 
 export const ScreenshotGallery: React.FC = () => {
@@ -46,7 +47,44 @@ export const ScreenshotGallery: React.FC = () => {
   }, [hasRealScreenshots, selectedIndex]);
 
   if (!hasRealScreenshots) {
-    return null;
+    return (
+      <section
+        id="screenshots"
+        className="py-16 md:py-24 bg-neutral-50"
+        aria-labelledby="screenshots-title"
+      >
+        <div className="container mx-auto px-4 md:px-6">
+          <header className="text-center mb-10">
+            <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+              {t('screenshots.badge')}
+            </span>
+            <h2
+              id="screenshots-title"
+              className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 leading-tight"
+            >
+              {t('screenshots.title')}
+            </h2>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">{t('screenshots.subtitle')}</p>
+          </header>
+
+          <div className="max-w-2xl mx-auto rounded-2xl border border-neutral-200 bg-white p-6 md:p-7 flex flex-col sm:flex-row items-start gap-5">
+            <span className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-primary/10 text-primary">
+              <CameraOff className="w-5 h-5" aria-hidden="true" />
+            </span>
+            <div>
+              <p className="text-neutral-600 leading-relaxed mb-4">{t('screenshots.pending')}</p>
+              <Link
+                to="/guide"
+                className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              >
+                <BookOpenText className="w-4 h-4" aria-hidden="true" />
+                {t('nav.guide')}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   const active = selectedIndex !== null ? screenshots[selectedIndex] : null;
@@ -54,7 +92,7 @@ export const ScreenshotGallery: React.FC = () => {
   return (
     <section
       id="screenshots"
-      className="py-16 md:py-24 bg-white"
+      className="py-16 md:py-24 bg-neutral-50"
       aria-labelledby="screenshots-title"
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -115,7 +153,8 @@ export const ScreenshotGallery: React.FC = () => {
           ))}
         </motion.div>
 
-        <p className="text-center text-sm text-neutral-500 mt-10">{t('screenshots.zoomHint')}</p>
+        <p className="text-center text-neutral-600 mt-10 max-w-2xl mx-auto">{t('screenshots.closing')}</p>
+        <p className="text-center text-sm text-neutral-500 mt-3">{t('screenshots.zoomHint')}</p>
       </div>
 
       <AnimatePresence>

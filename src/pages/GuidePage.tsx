@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ClipboardList, Database, Download, FileText, LayoutDashboard, LifeBuoy, MonitorPlay, Rocket, WifiOff } from 'lucide-react';
+import { ArrowLeft, Boxes, Building2, ClipboardList, Database, Download, FileText, Languages, LifeBuoy, MonitorPlay, PieChart, Rocket, Wallet } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { usePageTitle } from '../i18n/usePageTitle';
 import { PageHeader } from '../components/PageHeader';
@@ -21,10 +21,13 @@ const steps = [
 }>;
 
 const coreFunctions = [
-  { icon: WifiOff, titleKey: 'features.offline.title' },
-  { icon: FileText, titleKey: 'features.invoices.title' },
+  { icon: FileText, titleKey: 'features.documents.title' },
+  { icon: Building2, titleKey: 'features.partners.title' },
+  { icon: Wallet, titleKey: 'features.debts.title' },
+  { icon: Boxes, titleKey: 'features.stock.title' },
+  { icon: PieChart, titleKey: 'features.reports.title' },
+  { icon: Languages, titleKey: 'features.languages.title' },
   { icon: Database, titleKey: 'features.localData.title' },
-  { icon: LayoutDashboard, titleKey: 'features.ui.title' },
 ] as const satisfies ReadonlyArray<{
   icon: React.ComponentType<{ className?: string }>;
   titleKey: TranslationKey;

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { getDownloadState, siteConfig } from '../config/siteConfig';
-import { Download } from 'lucide-react';
+import { Download, LifeBuoy } from 'lucide-react';
 
 export const DownloadCTA: React.FC = () => {
   const { t } = useLanguage();
@@ -51,6 +51,28 @@ export const DownloadCTA: React.FC = () => {
           <Download className="w-6 h-6" aria-hidden="true" />
           {t(isReady ? 'cta.downloadBtn' : 'hero.downloadPendingBtn')}
         </button>
+
+        <motion.div
+          className="mt-8 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.15, duration: 0.5 }}
+        >
+          <Link
+            to="/pricing"
+            className="inline-flex items-center gap-2 border border-white/50 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+          >
+            {t('cta.pricingBtn')}
+          </Link>
+          <Link
+            to="/support"
+            className="inline-flex items-center gap-2 text-primary-light font-medium hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
+          >
+            <LifeBuoy className="w-4 h-4" aria-hidden="true" />
+            {t('cta.supportLink')}
+          </Link>
+        </motion.div>
 
         <p className="mt-5 text-sm text-primary-light/90 tabular-nums">
           {siteConfig.release.version} · {siteConfig.systemRequirements.os} ·{' '}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { siteConfig, getDownloadState } from '../config/siteConfig';
@@ -7,18 +7,35 @@ import { Download, Menu, X } from 'lucide-react';
 import { type Locale } from '../i18n/translations';
 import type { TranslationKey } from '../i18n/translations';
 
-const navItems = [
-  { to: '/', key: 'nav.home', end: true },
-  { to: '/guide', key: 'nav.guide', end: false },
-  { to: '/pricing', key: 'nav.pricing', end: false },
-  { to: '/support', key: 'nav.support', end: false },
-] as const satisfies ReadonlyArray<{ to: string; key: TranslationKey; end: boolean }>;
+interface NavItem {
+  key: TranslationKey;
+  to: string;
+  hash?: string;
+  end?: boolean;
+}
+
+const navItems: readonly NavItem[] = [
+  { key: 'nav.home', to: '/', end: true },
+  { key: 'nav.features', to: '/', hash: '#features' },
+  { key: 'nav.screenshots', to: '/', hash: '#screenshots' },
+  { key: 'nav.how', to: '/', hash: '#how-it-works' },
+  { key: 'nav.pricing', to: '/pricing' },
+  { key: 'nav.support', to: '/support' },
+];
 
 export const Header: React.FC = () => {
   const { t, locale, setLocale, availableLocales, localeNames } = useLanguage();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+
+  const isItemActive = (item: NavItem): boolean =>
+    item.hash
+      ? location.pathname === item.to && location.hash === item.hash
+      : item.end
+        ? location.pathname === item.to && !location.hash
+        : location.pathname.startsWith(item.to);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,14 +53,14 @@ export const Header: React.FC = () => {
     window.open(download.url, '_blank', 'noopener,noreferrer');
   };
 
-  const linkClass = ({ isActive }: { isActive: boolean }): string =>
+  const linkClass = (active: boolean): string =>
     `relative px-4 py-2 text-sm font-medium rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 ${
-      isActive ? 'text-primary' : 'text-neutral-600 hover:text-primary'
+      active ? 'text-primary' : 'text-neutral-600 hover:text-primary'
     }`;
 
-  const mobileLinkClass = ({ isActive }: { isActive: boolean }): string =>
+  const mobileLinkClass = (active: boolean): string =>
     `block px-3 py-2.5 text-base font-medium rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 ${
-      isActive ? 'text-primary bg-primary-light' : 'text-neutral-700 hover:text-primary hover:bg-primary-light'
+      active ? 'text-primary bg-primary-light' : 'text-neutral-700 hover:text-primary hover:bg-primary-light'
     }`;
 
   return (
@@ -71,41 +88,43 @@ export const Header: React.FC = () => {
           >
             <img
               src={siteConfig.assets.logo}
-              alt=""
+              alt={t('a11y.logoAlt')}
               className="h-9 w-9 object-contain"
               width={36}
               height={36}
               decoding="async"
-              aria-hidden="true"
             />
             <span className="font-bold text-xl tracking-tight text-neutral-900">
               {siteConfig.app.name}
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.to}
-                initial={{ opacity: 0, y: -12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 + index * 0.05, duration: 0.35 }}
-              >
-                <NavLink to={item.to} end={item.end} className={linkClass}>
-                  {({ isActive }) => (
-                    <>
-                      {t(item.key)}
-                      <span
-                        className={`absolute bottom-0 start-4 end-4 h-0.5 rounded-full bg-primary transition-opacity ${
-                          isActive ? 'opacity-100' : 'opacity-0'
-                        }`}
-                        aria-hidden="true"
-                      />
-                    </>
-                  )}
-                </NavLink>
-              </motion.div>
-            ))}
+          <div className="hidden xl:flex items-center gap-1">
+            {navItems.map((item, index) => {
+              const active = isItemActive(item);
+              return (
+                <motion.div
+                  key={`${item.to}${item.hash ?? ''}`}
+                  initial={{ opacity: 0, y: -12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + index * 0.05, duration: 0.35 }}
+                >
+                  <Link
+                    to={{ pathname: item.to, hash: item.hash }}
+                    className={linkClass(active)}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {t(item.key)}
+                    <span
+                      className={`absolute bottom-0 start-4 end-4 h-0.5 rounded-full bg-primary transition-opacity ${
+                        active ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-3">
@@ -142,7 +161,7 @@ export const Header: React.FC = () => {
 
             <button
               type="button"
-              className="md:hidden p-2 rounded-lg text-neutral-700 hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="xl:hidden p-2 rounded-lg text-neutral-700 hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -157,7 +176,7 @@ export const Header: React.FC = () => {
           {isMobileMenuOpen && (
             <motion.div
               id="mobile-menu"
-              className="md:hidden overflow-hidden"
+              className="xl:hidden overflow-hidden"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -168,15 +187,15 @@ export const Header: React.FC = () => {
                 aria-label={t('a11y.mobileNav')}
               >
                 {navItems.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    end={item.end}
-                    className={mobileLinkClass}
+                  <Link
+                    key={`${item.to}${item.hash ?? ''}`}
+                    to={{ pathname: item.to, hash: item.hash }}
+                    className={mobileLinkClass(isItemActive(item))}
+                    aria-current={isItemActive(item) ? 'page' : undefined}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {t(item.key)}
-                  </NavLink>
+                  </Link>
                 ))}
                 <div className="flex items-center gap-3 px-3 py-2 mt-2">
                   <label htmlFor="mobile-language-select" className="sr-only">

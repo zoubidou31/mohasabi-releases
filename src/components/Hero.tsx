@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { getDownloadState, siteConfig } from '../config/siteConfig';
-import { Download, BookOpenText } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -34,12 +33,14 @@ export const Hero: React.FC = () => {
 
             <h1
               id="hero-title"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight mb-6 text-balance"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight mb-4 text-balance"
             >
               {t('hero.title')}
             </h1>
 
-            <p className="text-lg md:text-xl text-neutral-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-lg md:text-xl font-medium text-primary mb-3">{t('hero.tagline')}</p>
+
+            <p className="text-base md:text-lg text-neutral-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               {t('hero.subtitle')}
             </p>
 
@@ -54,16 +55,20 @@ export const Hero: React.FC = () => {
                 <Download className="w-5 h-5" aria-hidden="true" />
                 {t(isReady ? 'hero.downloadBtn' : 'hero.downloadPendingBtn')}
               </button>
-              <Link
-                to="/guide"
+              <a
+                href="#features"
                 className="flex items-center justify-center gap-2 bg-white text-primary font-semibold px-8 py-4 rounded-xl border-2 border-primary hover:bg-primary-light focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all duration-200 min-w-[220px]"
               >
-                <BookOpenText className="w-5 h-5" aria-hidden="true" />
-                {t('hero.guideBtn')}
-              </Link>
+                <ArrowDown className="w-5 h-5" aria-hidden="true" />
+                {t('hero.featuresBtn')}
+              </a>
             </div>
 
-            <p id="download-status-note" className="text-sm text-neutral-500 mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-sm text-neutral-500 mb-6 max-w-xl mx-auto lg:mx-0">
+              {t('hero.specLine')}
+            </p>
+
+            <p id="download-status-note" className="text-sm text-neutral-500 mb-6 max-w-xl mx-auto lg:mx-0">
               {isReady ? (
                 t('cta.note')
               ) : (
@@ -80,6 +85,8 @@ export const Hero: React.FC = () => {
                 </>
               )}
             </p>
+
+            <p className="text-sm text-neutral-600 max-w-xl mx-auto lg:mx-0">{t('hero.footnote')}</p>
           </div>
 
           <div className="order-1 lg:order-2 relative">
