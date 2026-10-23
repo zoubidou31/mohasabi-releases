@@ -18,8 +18,8 @@
   --color-neutral-100: #eeeeee;
   --color-neutral-50: #f5f5f5;
 
-  --font-family-sans: "Inter", system-ui, sans-serif;
-  --font-family-arabic: "Noto Sans Arabic", system-ui, sans-serif;
+  --font-sans: "Inter", "Noto Sans Arabic", system-ui, sans-serif;
+  --font-arabic: "Noto Sans Arabic", "Inter", system-ui, sans-serif;
 
   --container-max-width: 80rem;
   --container-padding: 1.5rem;
@@ -31,9 +31,14 @@
   }
 
   body {
+    font-family: var(--font-sans);
     color: var(--color-neutral-900);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic);
   }
 
   * {
