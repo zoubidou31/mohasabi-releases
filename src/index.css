@@ -4,10 +4,9 @@
   --color-primary: #1b5e20;
   --color-primary-light: #f4f9f4;
   --color-primary-dark: #144d18;
-  --color-secondary-pro: #1976d2;
-  --color-secondary-pro-light: #e3f2fd;
-  --color-secondary-enterprise: #512da8;
-  --color-secondary-enterprise-light: #ede7f6;
+  --color-plan-standard: #1b5e20;
+  --color-plan-pro: #1976d2;
+  --color-plan-enterprise: #512da8;
   --color-neutral-900: #212121;
   --color-neutral-800: #333333;
   --color-neutral-700: #444444;
@@ -42,10 +41,8 @@
   }
 
   :focus-visible {
-    outline: none;
-    ring: 2px;
-    ring-color: var(--color-primary);
-    ring-offset: 2px;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   ::selection {
@@ -81,10 +78,8 @@
   }
 
   .btn-primary:focus-visible {
-    outline: none;
-    ring: 2px;
-    ring-color: var(--color-primary);
-    ring-offset: 2px;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   .btn-secondary {
@@ -106,10 +101,8 @@
   }
 
   .btn-secondary:focus-visible {
-    outline: none;
-    ring: 2px;
-    ring-color: var(--color-primary);
-    ring-offset: 2px;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   .section-title {
@@ -177,14 +170,6 @@
 
 html[dir="rtl"] {
   direction: rtl;
-}
-
-html[dir="rtl"] .flex {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 1;
 }
 
 @media print {

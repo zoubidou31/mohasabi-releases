@@ -39,6 +39,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = isRTL(locale) ? 'rtl' : 'ltr';
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+      description.setAttribute('content', getTranslation(locale, 'seo.description'));
+    }
   }, [locale]);
 
   const t = useCallback((key: TranslationKey) => {

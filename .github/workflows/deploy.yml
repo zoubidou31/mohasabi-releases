@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
+# Cloudflare Pages (https://mohasabi.pages.dev/) is the primary host for this
+# site and builds from this repository automatically. This workflow is kept for
+# manual emergency use only, so a push no longer publishes a duplicate site.
 on:
-  push:
-    branches: ['main']
   workflow_dispatch:
 
 permissions:

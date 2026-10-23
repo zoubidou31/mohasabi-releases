@@ -7,7 +7,7 @@ export default defineConfig({
   base: process.env.BASE_PATH || '/',
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: undefined,

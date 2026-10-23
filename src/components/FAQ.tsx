@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { siteConfig } from '../config/siteConfig';
@@ -39,7 +40,7 @@ export const FAQ: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <HelpCircle className="w-4 h-4" aria-hidden="true" />
-            <span>أسئلة شائعة</span>
+            <span>{t('faq.badge')}</span>
           </motion.span>
           <motion.h2
             id="faq-title"
@@ -68,11 +69,11 @@ export const FAQ: React.FC = () => {
             >
               <motion.button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                className="w-full flex items-center justify-between p-6 text-start focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary"
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
               >
-                <motion.h3 className="text-lg font-semibold text-neutral-900 pr-4 flex-1">
+                <motion.h3 className="text-lg font-semibold text-neutral-900 pe-4 flex-1">
                   {t(item.qKey)}
                 </motion.h3>
                 <motion.div
@@ -120,17 +121,23 @@ export const FAQ: React.FC = () => {
           <motion.p className="text-neutral-600 mb-4">
             {t('faq.moreHelp')}
           </motion.p>
-          <motion.a
-            href={siteConfig.contact.issuesUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
-            whileHover={{ scale: 1.02, boxShadow: '0 15px 30px -5px rgb(27 94 32 / 0.4)' }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <HelpCircle className="w-5 h-5" aria-hidden="true" />
-            {t('faq.openTicket')}
-          </motion.a>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to="/support"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <HelpCircle className="w-5 h-5" aria-hidden="true" />
+              {t('nav.support')}
+            </Link>
+            <a
+              href={siteConfig.contact.issuesUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 text-neutral-700 font-medium rounded-xl hover:bg-neutral-50 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              {t('faq.openTicket')}
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
