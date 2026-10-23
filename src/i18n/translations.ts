@@ -4,6 +4,7 @@ export type TranslationKey =
   | 'nav.home'
   | 'nav.features'
   | 'nav.screenshots'
+  | 'nav.howItWorks'
   | 'nav.requirements'
   | 'nav.faq'
   | 'nav.download'
@@ -41,8 +42,9 @@ export type TranslationKey =
   | 'screenshots.title'
   | 'screenshots.subtitle'
   | 'screenshots.alt.main'
-  | 'screenshots.alt.customers'
+  | 'screenshots.alt.dashboard'
   | 'screenshots.alt.invoices'
+  | 'screenshots.alt.clients'
   | 'screenshots.alt.products'
   | 'howItWorks.title'
   | 'howItWorks.step1.title'
@@ -79,6 +81,7 @@ export type TranslationKey =
   | 'footer.links.home'
   | 'footer.links.features'
   | 'footer.links.screenshots'
+  | 'footer.links.howItWorks'
   | 'footer.links.requirements'
   | 'footer.links.faq'
   | 'footer.links.releases'
@@ -94,6 +97,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'nav.home': 'الرئيسية',
     'nav.features': 'المميزات',
     'nav.screenshots': 'لقطات الشاشة',
+    'nav.howItWorks': 'كيف يعمل',
     'nav.requirements': 'متطلبات التشغيل',
     'nav.faq': 'الأسئلة الشائعة',
     'nav.download': 'تحميل البرنامج',
@@ -131,8 +135,9 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'screenshots.title': 'اكتشف واجهة Mohasabi',
     'screenshots.subtitle': 'تعرّف على البرنامج من الداخل قبل تحميله',
     'screenshots.alt.main': 'الواجهة الرئيسية للبرنامج',
-    'screenshots.alt.customers': 'إدارة العملاء',
-    'screenshots.alt.invoices': 'إنشاء الفواتير',
+    'screenshots.alt.dashboard': 'لوحة التحكم الرئيسية',
+    'screenshots.alt.invoices': 'إدارة الفواتير',
+    'screenshots.alt.clients': 'إدارة العملاء',
     'screenshots.alt.products': 'إدارة المنتجات',
     'howItWorks.title': 'ابدأ مع Mohasabi في خطوات بسيطة',
     'howItWorks.step1.title': 'حمّل البرنامج',
@@ -169,6 +174,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'footer.links.home': 'الرئيسية',
     'footer.links.features': 'المميزات',
     'footer.links.screenshots': 'لقطات الشاشة',
+    'footer.links.howItWorks': 'كيف يعمل',
     'footer.links.requirements': 'متطلبات التشغيل',
     'footer.links.faq': 'الأسئلة الشائعة',
     'footer.links.releases': 'الإصدارات الرسمية',
@@ -183,6 +189,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'nav.home': 'Accueil',
     'nav.features': 'Fonctionnalités',
     'nav.screenshots': 'Captures d\'écran',
+    'nav.howItWorks': 'Comment ça marche',
     'nav.requirements': 'Configuration requise',
     'nav.faq': 'Questions fréquentes',
     'nav.download': 'Télécharger Mohasabi',
@@ -210,7 +217,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'features.invoices.title': 'Gestion des clients et factures',
     'features.invoices.desc': 'Organisez les données clients, créez des factures et suivez vos opérations quotidiennes depuis une interface de bureau unique.',
     'features.localData.title': 'Données locales sur votre appareil',
-    'features.localData.desc': 'Le logiciel repose sur un stockage local des données,支持 le travail de bureau sans service cloud centralisé.',
+    'features.localData.desc': 'Le logiciel repose sur un stockage local des données, pour un travail de bureau sans service cloud centralisé.',
     'features.license.title': 'Système de licence lié à l\'appareil',
     'features.license.desc': 'Le programme prend en charge un système de licence utilisant l\'identifiant de l\'appareil pour vérifier la validité de l\'activation selon les règles de licence adoptées.',
     'features.updates.title': 'Accès aux nouvelles versions',
@@ -220,8 +227,9 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'screenshots.title': 'Découvrez l\'interface de Mohasabi',
     'screenshots.subtitle': 'Apprenez à connaître le logiciel de l\'intérieur avant de le télécharger',
     'screenshots.alt.main': 'Interface principale du logiciel',
-    'screenshots.alt.customers': 'Gestion des clients',
-    'screenshots.alt.invoices': 'Création de factures',
+    'screenshots.alt.dashboard': 'Tableau de bord principal',
+    'screenshots.alt.invoices': 'Gestion des factures',
+    'screenshots.alt.clients': 'Gestion des clients',
     'screenshots.alt.products': 'Gestion des produits',
     'howItWorks.title': 'Commencez avec Mohasabi en quelques étapes simples',
     'howItWorks.step1.title': 'Téléchargez le logiciel',
@@ -258,6 +266,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'footer.links.home': 'Accueil',
     'footer.links.features': 'Fonctionnalités',
     'footer.links.screenshots': 'Captures d\'écran',
+    'footer.links.howItWorks': 'Comment ça marche',
     'footer.links.requirements': 'Configuration requise',
     'footer.links.faq': 'Questions fréquentes',
     'footer.links.releases': 'Versions officielles',
@@ -272,6 +281,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'nav.home': 'Home',
     'nav.features': 'Features',
     'nav.screenshots': 'Screenshots',
+    'nav.howItWorks': 'How It Works',
     'nav.requirements': 'System Requirements',
     'nav.faq': 'FAQ',
     'nav.download': 'Download Mohasabi',
@@ -309,8 +319,9 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'screenshots.title': 'Discover the Mohasabi Interface',
     'screenshots.subtitle': 'Get to know the software from the inside before downloading',
     'screenshots.alt.main': 'Main software interface',
-    'screenshots.alt.customers': 'Customer management',
-    'screenshots.alt.invoices': 'Invoice creation',
+    'screenshots.alt.dashboard': 'Main dashboard',
+    'screenshots.alt.invoices': 'Invoice management',
+    'screenshots.alt.clients': 'Client management',
     'screenshots.alt.products': 'Product management',
     'howItWorks.title': 'Get Started with Mohasabi in Simple Steps',
     'howItWorks.step1.title': 'Download the Software',
@@ -347,6 +358,7 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'footer.links.home': 'Home',
     'footer.links.features': 'Features',
     'footer.links.screenshots': 'Screenshots',
+    'footer.links.howItWorks': 'How It Works',
     'footer.links.requirements': 'System Requirements',
     'footer.links.faq': 'FAQ',
     'footer.links.releases': 'Official Releases',

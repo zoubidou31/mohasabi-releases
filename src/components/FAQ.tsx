@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
+import { siteConfig } from '../config/siteConfig';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqItems = [
   { qKey: 'faq.offline.q' as const, aKey: 'faq.offline.a' as const },
@@ -21,46 +24,124 @@ export const FAQ: React.FC = () => {
   return (
     <section
       id="faq"
-      className="py-16 md:py-24 bg-neutral-50"
+      className="py-16 md:py-24 bg-gradient-to-b from-neutral-50/50 to-white relative overflow-hidden"
       aria-labelledby="faq-title"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <header className="text-center mb-12 md:mb-16">
-          <h2 id="faq-title" className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-            {t('faq.title')}
-          </h2>
-        </header>
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-from)_0%,_transparent_70%)] from-primary/5 via-transparent to-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        aria-hidden="true"
+      />
 
-        <div className="max-w-3xl mx-auto space-y-4">
+      <div className="container mx-auto px-4 md:px-6 relative">
+        <motion.header
+          className="text-center mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <HelpCircle className="w-4 h-4" aria-hidden="true" />
+            <span>Questions fréquentes</span>
+          </motion.span>
+          <motion.h2
+            id="faq-title"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 leading-tight"
+          >
+            Réponses à vos <span className="text-primary">questions</span>
+          </motion.h2>
+          <motion.p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+            Ne trouvez-vous pas votre réponse ? <a href={siteConfig.contact.issuesUrl} target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">Contactez-nous</a>
+          </motion.p>
+        </motion.header>
+
+        <motion.div
+          className="max-w-3xl mx-auto space-y-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
           {faqItems.map((item, index) => (
-            <details
+            <motion.div
               key={index}
-              className="group bg-white rounded-xl border border-neutral-200 overflow-hidden"
-              open={openIndex === index}
-              onToggle={() => toggleFAQ(index)}
+              className="group bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.05, duration: 0.4 }}
             >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset">
-                <h3 className="text-lg font-semibold text-neutral-900 pr-4">
+              <motion.button
+                onClick={() => toggleFAQ(index)}
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <motion.h3 className="text-lg font-semibold text-neutral-900 pr-4 flex-1">
                   {t(item.qKey)}
-                </h3>
-                <svg
-                  className="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform duration-200 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+                </motion.h3>
+                <motion.div
+                  className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-100 text-neutral-500 transition-all duration-300 group-hover:bg-primary/10 group-hover:text-primary"
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-6 pb-6 pt-0 animate-slide-down">
-                <p className="text-neutral-600 leading-relaxed">
-                  {t(item.aKey)}
-                </p>
-              </div>
-            </details>
+                  <ChevronDown className="w-5 h-5" aria-hidden="true" />
+                </motion.div>
+              </motion.button>
+
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    id={`faq-answer-${index}`}
+                    className="px-6 pb-6"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  >
+                    <motion.div
+                      className="pt-4 border-t border-neutral-100"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
+                    >
+                      <motion.p className="text-neutral-600 leading-relaxed">
+                        {t(item.aKey)}
+                      </motion.p>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
+          <motion.p className="text-neutral-600 mb-4">
+            Vous n'avez pas trouvé votre réponse ?
+          </motion.p>
+          <motion.a
+            href={siteConfig.contact.issuesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30"
+            whileHover={{ scale: 1.02, boxShadow: '0 15px 30px -5px rgb(27 94 32 / 0.4)' }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <HelpCircle className="w-5 h-5" aria-hidden="true" />
+            Ouvrir un ticket sur GitHub
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

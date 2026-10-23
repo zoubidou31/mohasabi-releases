@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#f4f9f4"/>
+  <rect x="50" y="30" width="700" height="50" rx="8" fill="#1b5e20"/>
+  <rect x="50" y="100" width="700" height="60" rx="8" fill="white" stroke="#e0e0e0" stroke-width="2"/>
+  <rect x="50" y="180" width="340" height="380" rx="8" fill="white" stroke="#e0e0e0" stroke-width="2"/>
+  <rect x="410" y="180" width="340" height="380" rx="8" fill="white" stroke="#e0e0e0" stroke-width="2"/>
+  <text x="400" y="220" text-anchor="middle" font-family="system-ui" font-size="24" fill="#999">Customers Management</text>
+  <text x="400" y="300" text-anchor="middle" font-family="system-ui" font-size="16" fill="#ccc">Add, Edit, Search Customers</text>
+</svg>

@@ -1,41 +1,39 @@
+import { motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
+import { Shield, HardDrive, Key, RefreshCw, CheckCircle } from 'lucide-react';
 
 const trustItems = [
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
+    icon: Shield,
     titleKey: 'trust.offline' as const,
     descKey: 'trust.offlineDesc' as const,
+    badge: 'Hors-ligne',
+    color: 'from-emerald-500 to-green-600',
+    bgColor: 'bg-emerald-50 border-emerald-100',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
+    icon: HardDrive,
     titleKey: 'trust.localData' as const,
     descKey: 'trust.localDataDesc' as const,
+    badge: 'Local First',
+    color: 'from-blue-500 to-blue-600',
+    bgColor: 'bg-blue-50 border-blue-100',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-      </svg>
-    ),
+    icon: Key,
     titleKey: 'trust.license' as const,
     descKey: 'trust.licenseDesc' as const,
+    badge: 'Licence Device',
+    color: 'from-purple-500 to-purple-600',
+    bgColor: 'bg-purple-50 border-purple-100',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
+    icon: RefreshCw,
     titleKey: 'trust.updates' as const,
     descKey: 'trust.updatesDesc' as const,
+    badge: 'Mises à jour',
+    color: 'from-orange-500 to-orange-600',
+    bgColor: 'bg-orange-50 border-orange-100',
   },
 ] as const;
 
@@ -45,34 +43,128 @@ export const TrustHighlights: React.FC = () => {
   return (
     <section
       id="trust"
-      className="py-16 md:py-24 bg-white border-y border-neutral-200"
+      className="py-16 md:py-24 bg-white relative overflow-hidden"
       aria-labelledby="trust-title"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <header className="text-center mb-12 md:mb-16">
-          <h2 id="trust-title" className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-            {t('trust.title')}
-          </h2>
-        </header>
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+        aria-hidden="true"
+      />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="container mx-auto px-4 md:px-6 relative">
+        <motion.header
+          className="text-center mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <motion.span
+              className="w-2 h-2 bg-primary rounded-full"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            {t('trust.title')}
+          </motion.span>
+          <motion.h2
+            id="trust-title"
+            className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4"
+          >
+            Pourquoi faire <span className="text-primary">confiance</span> à Mohasabi ?
+          </motion.h2>
+        </motion.header>
+
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
           {trustItems.map((item, index) => (
-            <article
+            <motion.article
               key={index}
-              className="group p-6 bg-white rounded-xl border border-neutral-200 hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+              className={`group relative p-6 md:p-8 rounded-2xl border transition-all duration-500 ${item.bgColor} hover:border-transparent hover:shadow-2xl hover:shadow-primary/5`}
+              whileHover={{ y: -8 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
             >
-              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary-light text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                {item.icon}
-              </div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-2">
+              <motion.div
+                className={`absolute top-6 right-6 px-3 py-1 text-xs font-semibold text-white rounded-full ${item.color}`}
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ delay: 0.5 + index * 0.1, type: 'spring', stiffness: 260, damping: 20 }}
+              >
+                {item.badge}
+              </motion.div>
+
+              <motion.div
+                className={`relative flex items-center justify-center w-14 h-14 rounded-xl ${item.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
+                whileHover={{ rotate: 6 }}
+              >
+                <item.icon className="w-7 h-7" aria-hidden="true" />
+              </motion.div>
+
+              <motion.h3
+                className="text-lg md:text-xl font-semibold text-neutral-900 mb-3"
+                whileHover={{ x: 4 }}
+              >
                 {t(item.titleKey)}
-              </h3>
-              <p className="text-neutral-600 leading-relaxed">
+              </motion.h3>
+              <motion.p
+                className="text-neutral-600 leading-relaxed"
+              >
                 {t(item.descKey)}
-              </p>
-            </article>
+              </motion.p>
+
+              <motion.div
+                className="absolute bottom-6 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              />
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <motion.div
+            className="inline-flex items-center gap-4 text-sm text-neutral-500"
+          >
+            <motion.span
+              className="flex items-center gap-1.5"
+              whileHover={{ scale: 1.05 }}
+            >
+              <CheckCircle className="w-5 h-5 text-primary" aria-hidden="true" />
+              <span>Aucune donnée cloud</span>
+            </motion.span>
+            <motion.span
+              className="flex items-center gap-1.5"
+              whileHover={{ scale: 1.05 }}
+            >
+              <CheckCircle className="w-5 h-5 text-primary" aria-hidden="true" />
+              <span>Open Source Friendly</span>
+            </motion.span>
+            <motion.span
+              className="flex items-center gap-1.5"
+              whileHover={{ scale: 1.05 }}
+            >
+              <CheckCircle className="w-5 h-5 text-primary" aria-hidden="true" />
+              <span>RGPD Compliant</span>
+            </motion.span>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

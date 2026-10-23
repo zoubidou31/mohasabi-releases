@@ -3,6 +3,9 @@ export interface SiteConfig {
     name: string;
     tagline: string;
     description: string;
+    version: string;
+    versionDate: string;
+    versionSize: string;
   };
   github: {
     owner: string;
@@ -29,7 +32,7 @@ export interface SiteConfig {
   assets: {
     logo: string;
     heroScreenshot: string;
-    screenshots: string[];
+    screenshots: Array<{ src: string; alt: string; title: string }>;
   };
 }
 
@@ -38,6 +41,9 @@ export const siteConfig: SiteConfig = {
     name: 'Mohasabi',
     tagline: 'برنامج محاسبة مكتبي يساعدك على تنظيم أعمالك اليومية',
     description: 'Mohasabi برنامج محاسبة مكتبي يساعدك على تنظيم عملياتك اليومية وإدارة العملاء والفواتير من خلال واجهة عملية، مع تخزين البيانات محليًا وإمكانية العمل دون اتصال بالإنترنت.',
+    version: 'v1.0.3',
+    versionDate: '2025-01-15',
+    versionSize: '45.2 MB',
   },
   github: {
     owner: 'zoubidou31',
@@ -62,13 +68,13 @@ export const siteConfig: SiteConfig = {
     issuesUrl: 'https://github.com/zoubidou31/mohasabi-releases/issues',
   },
   assets: {
-    logo: '/assets/images/logo.svg',
-    heroScreenshot: '/assets/images/hero-screenshot.svg',
+    logo: '/assets/logo.svg',
+    heroScreenshot: '/assets/screenshots/hero.svg',
     screenshots: [
-      '/assets/images/screenshot-1.svg',
-      '/assets/images/screenshot-2.svg',
-      '/assets/images/screenshot-3.svg',
-      '/assets/images/screenshot-4.svg',
+      { src: '/assets/screenshots/dashboard.svg', alt: 'screenshots.alt.dashboard', title: 'screenshots.alt.dashboard' },
+      { src: '/assets/screenshots/factures.svg', alt: 'screenshots.alt.invoices', title: 'screenshots.alt.invoices' },
+      { src: '/assets/screenshots/clients.svg', alt: 'screenshots.alt.clients', title: 'screenshots.alt.clients' },
+      { src: '/assets/screenshots/produits.svg', alt: 'screenshots.alt.products', title: 'screenshots.alt.products' },
     ],
   },
 };
