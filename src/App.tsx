@@ -1,7 +1,6 @@
 import { LanguageProvider } from './i18n/LanguageContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { TrustHighlights } from './components/TrustHighlights';
 import { Features } from './components/Features';
 import { ScreenshotGallery } from './components/ScreenshotGallery';
 import { HowItWorks } from './components/HowItWorks';
@@ -17,7 +16,6 @@ function App() {
         <Header />
         <main id="main-content" className="pt-16">
           <Hero />
-          <TrustHighlights />
           <Features />
           <ScreenshotGallery />
           <HowItWorks />

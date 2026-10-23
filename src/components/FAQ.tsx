@@ -6,9 +6,7 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqItems = [
   { qKey: 'faq.offline.q' as const, aKey: 'faq.offline.a' as const },
-  { qKey: 'faq.os.q' as const, aKey: 'faq.os.a' as const },
   { qKey: 'faq.latest.q' as const, aKey: 'faq.latest.a' as const },
-  { qKey: 'faq.updates.q' as const, aKey: 'faq.updates.a' as const },
   { qKey: 'faq.data.q' as const, aKey: 'faq.data.a' as const },
   { qKey: 'faq.support.q' as const, aKey: 'faq.support.a' as const },
 ] as const;
@@ -24,17 +22,9 @@ export const FAQ: React.FC = () => {
   return (
     <section
       id="faq"
-      className="py-16 md:py-24 bg-gradient-to-b from-neutral-50/50 to-white relative overflow-hidden"
+      className="py-16 md:py-24 bg-neutral-50"
       aria-labelledby="faq-title"
     >
-      <motion.div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-from)_0%,_transparent_70%)] from-primary/5 via-transparent to-transparent"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        aria-hidden="true"
-      />
-
       <div className="container mx-auto px-4 md:px-6 relative">
         <motion.header
           className="text-center mb-12 md:mb-16"
@@ -49,16 +39,16 @@ export const FAQ: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <HelpCircle className="w-4 h-4" aria-hidden="true" />
-            <span>Questions fréquentes</span>
+            <span>أسئلة شائعة</span>
           </motion.span>
           <motion.h2
             id="faq-title"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 leading-tight"
+            className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 leading-tight"
           >
-            Réponses à vos <span className="text-primary">questions</span>
+            {t('faq.title')}
           </motion.h2>
           <motion.p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            Ne trouvez-vous pas votre réponse ? <a href={siteConfig.contact.issuesUrl} target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">Contactez-nous</a>
+            {t('faq.intro')}
           </motion.p>
         </motion.header>
 
@@ -122,13 +112,13 @@ export const FAQ: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="mt-12 text-center"
+          className="mt-10 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
         >
           <motion.p className="text-neutral-600 mb-4">
-            Vous n'avez pas trouvé votre réponse ?
+            {t('faq.moreHelp')}
           </motion.p>
           <motion.a
             href={siteConfig.contact.issuesUrl}
@@ -139,7 +129,7 @@ export const FAQ: React.FC = () => {
             whileTap={{ scale: 0.98 }}
           >
             <HelpCircle className="w-5 h-5" aria-hidden="true" />
-            Ouvrir un ticket sur GitHub
+            {t('faq.openTicket')}
           </motion.a>
         </motion.div>
       </div>

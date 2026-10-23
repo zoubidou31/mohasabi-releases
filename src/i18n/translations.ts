@@ -16,15 +16,6 @@ export type TranslationKey =
   | 'hero.size'
   | 'hero.date'
   | 'hero.os'
-  | 'trust.title'
-  | 'trust.offline'
-  | 'trust.offlineDesc'
-  | 'trust.localData'
-  | 'trust.localDataDesc'
-  | 'trust.license'
-  | 'trust.licenseDesc'
-  | 'trust.updates'
-  | 'trust.updatesDesc'
   | 'features.title'
   | 'features.subtitle'
   | 'features.offline.title'
@@ -33,10 +24,6 @@ export type TranslationKey =
   | 'features.invoices.desc'
   | 'features.localData.title'
   | 'features.localData.desc'
-  | 'features.license.title'
-  | 'features.license.desc'
-  | 'features.updates.title'
-  | 'features.updates.desc'
   | 'features.ui.title'
   | 'features.ui.desc'
   | 'screenshots.title'
@@ -61,18 +48,17 @@ export type TranslationKey =
   | 'requirements.diskSpace'
   | 'requirements.internet'
   | 'faq.title'
+  | 'faq.intro'
   | 'faq.offline.q'
   | 'faq.offline.a'
-  | 'faq.os.q'
-  | 'faq.os.a'
   | 'faq.latest.q'
   | 'faq.latest.a'
-  | 'faq.updates.q'
-  | 'faq.updates.a'
   | 'faq.data.q'
   | 'faq.data.a'
   | 'faq.support.q'
   | 'faq.support.a'
+  | 'faq.moreHelp'
+  | 'faq.openTicket'
   | 'cta.title'
   | 'cta.subtitle'
   | 'cta.downloadBtn'
@@ -109,15 +95,6 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'hero.size': 'الحجم',
     'hero.date': 'تاريخ الإصدار',
     'hero.os': 'نظام التشغيل',
-    'trust.title': 'لماذا تثق بـ Mohasabi؟',
-    'trust.offline': 'يعمل دون إنترنت',
-    'trust.offlineDesc': 'إدارة أعمالك المحلية دون الاعتماد على اتصال مستمر بالإنترنت.',
-    'trust.localData': 'بياناتك على جهازك',
-    'trust.localDataDesc': 'تخزين محلي للبيانات يدعم العمل المكتبي دون خدمة سحابية مركزية.',
-    'trust.license': 'ترخيص مرتبط بالجهاز',
-    'trust.licenseDesc': 'نظام ترخيص يستخدم معرّف الجهاز للتحقق من صلاحية التفعيل.',
-    'trust.updates': 'إصدارات جديدة',
-    'trust.updatesDesc': 'الوصول إلى الإصدارات الجديدة من خلال القناة الرسمية للبرنامج.',
     'features.title': 'كل ما تحتاجه لتنظيم أعمالك اليومية',
     'features.subtitle': 'مميزات تجعل المحاسبة اليومية أكثر سهولة وكفاءة',
     'features.offline.title': 'يعمل دون اتصال بالإنترنت',
@@ -126,10 +103,6 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'features.invoices.desc': 'نظّم بيانات العملاء وأنشئ الفواتير وتابع عملياتك اليومية من خلال واجهة مكتبية واحدة.',
     'features.localData.title': 'بيانات محلية على جهازك',
     'features.localData.desc': 'يعتمد البرنامج على تخزين البيانات محليًا، بما يدعم العمل المكتبي دون الاعتماد على خدمة سحابية مركزية.',
-    'features.license.title': 'نظام ترخيص مرتبط بالجهاز',
-    'features.license.desc': 'يدعم البرنامج نظام ترخيص يستخدم معرّف الجهاز للتحقق من صلاحية التفعيل وفقًا لقواعد الترخيص المعتمدة.',
-    'features.updates.title': 'الوصول إلى الإصدارات الجديدة',
-    'features.updates.desc': 'يمكنك الحصول على الإصدارات الجديدة من خلال قناة الإصدارات الرسمية للبرنامج.',
     'features.ui.title': 'واجهة واضحة وسهلة الاستخدام',
     'features.ui.desc': 'واجهة مصممة لتسهيل الوصول إلى الوظائف اليومية وتقليل الخطوات غير الضرورية أثناء العمل.',
     'screenshots.title': 'اكتشف واجهة Mohasabi',
@@ -154,18 +127,17 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'requirements.diskSpace': 'مساحة القرص',
     'requirements.internet': 'الاتصال بالإنترنت',
     'faq.title': 'الأسئلة الشائعة',
+    'faq.intro': 'إجابات مختصرة لأهم الأسئلة حول Mohasabi.',
     'faq.offline.q': 'هل يعمل Mohasabi دون إنترنت؟',
     'faq.offline.a': 'نعم، يدعم البرنامج العمل المحلي دون اتصال مستمر بالإنترنت. قد تحتاج بعض العمليات، مثل تنزيل الإصدار أو الحصول على تحديثات، إلى اتصال بالإنترنت.',
-    'faq.os.q': 'ما نظام التشغيل المطلوب؟',
-    'faq.os.a': 'البرنامج مخصص لنظام Windows، مع عرض الإصدارات المتوافقة التي تم التحقق منها فعليًا.',
     'faq.latest.q': 'كيف أحصل على أحدث إصدار؟',
     'faq.latest.a': 'استخدم زر التحميل في الموقع للحصول على ملف التثبيت من قناة GitHub Releases الرسمية، أو افتح صفحة الإصدارات إذا تعذر تنزيل الملف مباشرة.',
-    'faq.updates.q': 'هل يتم تحديث البرنامج تلقائيًا؟',
-    'faq.updates.a': 'يعتمد ذلك على الإصدار المنشور. إذا كان التحديث التلقائي مدعومًا، سيتم إشعارك به داخل البرنامج. وإلا، يمكنك تنزيل الإصدار الجديد يدويًا من صفحة الإصدارات.',
     'faq.data.q': 'هل بياناتي مخزنة على خادم سحابي؟',
     'faq.data.a': 'يعتمد Mohasabi على التخزين المحلي للبيانات على جهازك. لا توجد مزامنة سحابية أو نسخ احتياطي خارجي تلقائي ما لم يكن ذلك جزءًا فعليًا من المنتج.',
     'faq.support.q': 'أين أجد المساعدة أو الإبلاغ عن مشكلة؟',
     'faq.support.a': 'يمكنك زيارة صفحة Issues في مستودع GitHub الرسمي للإبلاغ عن المشاكل أو طلب المساعدة.',
+    'faq.moreHelp': 'هل تحتاج إلى مزيد من المساعدة؟',
+    'faq.openTicket': 'افتح تذكرة على GitHub',
     'cta.title': 'اجعل إدارة أعمالك اليومية أكثر تنظيمًا مع Mohasabi',
     'cta.subtitle': 'اكتشف البرنامج وابدأ باستخدام أدوات المحاسبة اليومية على جهاز Windows الخاص بك.',
     'cta.downloadBtn': 'تحميل Mohasabi الآن',
@@ -201,15 +173,6 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'hero.size': 'Taille',
     'hero.date': 'Date de sortie',
     'hero.os': 'Système d\'exploitation',
-    'trust.title': 'Pourquoi faire confiance à Mohasabi ?',
-    'trust.offline': 'Fonctionne hors ligne',
-    'trust.offlineDesc': 'Gérez votre activité locale sans dépendre d\'une connexion Internet permanente.',
-    'trust.localData': 'Vos données sur votre appareil',
-    'trust.localDataDesc': 'Stockage local des données pour un travail de bureau sans service cloud centralisé.',
-    'trust.license': 'Licence liée à l\'appareil',
-    'trust.licenseDesc': 'Système de licence utilisant l\'identifiant de l\'appareil pour vérifier la validité de l\'activation.',
-    'trust.updates': 'Nouvelles versions',
-    'trust.updatesDesc': 'Accédez aux nouvelles versions via le canal officiel du logiciel.',
     'features.title': 'Tout ce dont vous avez besoin pour organiser votre activité quotidienne',
     'features.subtitle': 'Des fonctionnalités qui rendent la comptabilité quotidienne plus simple et efficace',
     'features.offline.title': 'Fonctionnement hors ligne',
@@ -218,10 +181,6 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'features.invoices.desc': 'Organisez les données clients, créez des factures et suivez vos opérations quotidiennes depuis une interface de bureau unique.',
     'features.localData.title': 'Données locales sur votre appareil',
     'features.localData.desc': 'Le logiciel repose sur un stockage local des données, pour un travail de bureau sans service cloud centralisé.',
-    'features.license.title': 'Système de licence lié à l\'appareil',
-    'features.license.desc': 'Le programme prend en charge un système de licence utilisant l\'identifiant de l\'appareil pour vérifier la validité de l\'activation selon les règles de licence adoptées.',
-    'features.updates.title': 'Accès aux nouvelles versions',
-    'features.updates.desc': 'Vous pouvez obtenir les nouvelles versions via le canal officiel des versions du logiciel.',
     'features.ui.title': 'Interface claire et facile à utiliser',
     'features.ui.desc': 'Une interface conçue pour faciliter l\'accès aux fonctions quotidiennes et réduire les étapes inutiles pendant le travail.',
     'screenshots.title': 'Découvrez l\'interface de Mohasabi',
@@ -246,18 +205,17 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'requirements.diskSpace': 'Espace disque',
     'requirements.internet': 'Connexion Internet',
     'faq.title': 'Questions fréquentes',
+    'faq.intro': 'Réponses courtes aux questions les plus importantes sur Mohasabi.',
     'faq.offline.q': 'Mohasabi fonctionne-t-il sans Internet ?',
     'faq.offline.a': 'Oui, le logiciel prend en charge le travail local sans connexion Internet permanente. Certaines opérations, comme le téléchargement de la version ou l\'obtention de mises à jour, peuvent nécessiter une connexion Internet.',
-    'faq.os.q': 'Quel système d\'exploitation est requis ?',
-    'faq.os.a': 'Le logiciel est dédié à Windows, avec les versions compatibles qui ont été effectivement vérifiées.',
     'faq.latest.q': 'Comment obtenir la dernière version ?',
     'faq.latest.a': 'Utilisez le bouton de téléchargement sur le site pour obtenir le fichier d\'installation depuis le canal GitHub Releases officiel, ou ouvrez la page des versions si le téléchargement direct échoue.',
-    'faq.updates.q': 'Le logiciel se met-il à jour automatiquement ?',
-    'faq.updates.a': 'Cela dépend de la version publiée. Si la mise à jour automatique est prise en charge, vous en serez informé dans le logiciel. Sinon, vous pouvez télécharger la nouvelle version manuellement depuis la page des versions.',
     'faq.data.q': 'Mes données sont-elles stockées sur un serveur cloud ?',
     'faq.data.a': 'Mohasabi repose sur le stockage local des données sur votre appareil. Il n\'y a pas de synchronisation cloud ni de sauvegarde externe automatique, sauf si cela fait effectivement partie du produit.',
     'faq.support.q': 'Où trouver de l\'aide ou signaler un problème ?',
     'faq.support.a': 'Vous pouvez consulter la page Issues du dépôt GitHub officiel pour signaler des problèmes ou demander de l\'aide.',
+    'faq.moreHelp': 'Besoin de plus d\'aide ?',
+    'faq.openTicket': 'Ouvrir un ticket sur GitHub',
     'cta.title': 'Rendez la gestion de votre activité quotidienne plus organisée avec Mohasabi',
     'cta.subtitle': 'Découvrez le logiciel et commencez à utiliser les outils de comptabilité quotidiens sur votre appareil Windows.',
     'cta.downloadBtn': 'Télécharger Mohasabi maintenant',
@@ -293,15 +251,6 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'hero.size': 'Size',
     'hero.date': 'Release Date',
     'hero.os': 'Operating System',
-    'trust.title': 'Why Trust Mohasabi?',
-    'trust.offline': 'Works Offline',
-    'trust.offlineDesc': 'Manage your local business without relying on a constant internet connection.',
-    'trust.localData': 'Your Data on Your Device',
-    'trust.localDataDesc': 'Local data storage supporting desktop work without a centralized cloud service.',
-    'trust.license': 'Device-Linked License',
-    'trust.licenseDesc': 'License system using device identifier to verify activation validity.',
-    'trust.updates': 'New Versions',
-    'trust.updatesDesc': 'Access new versions through the software\'s official release channel.',
     'features.title': 'Everything You Need to Organize Your Daily Business',
     'features.subtitle': 'Features that make daily accounting simpler and more efficient',
     'features.offline.title': 'Works Offline',
@@ -310,10 +259,6 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'features.invoices.desc': 'Organize customer data, create invoices, and track your daily operations from a single desktop interface.',
     'features.localData.title': 'Local Data on Your Device',
     'features.localData.desc': 'The software relies on local data storage, supporting desktop work without depending on a centralized cloud service.',
-    'features.license.title': 'Device-Linked License System',
-    'features.license.desc': 'The program supports a license system using the device identifier to verify activation validity according to adopted licensing rules.',
-    'features.updates.title': 'Access to New Versions',
-    'features.updates.desc': 'You can obtain new versions through the software\'s official release channel.',
     'features.ui.title': 'Clear & Easy-to-Use Interface',
     'features.ui.desc': 'An interface designed to facilitate access to daily functions and reduce unnecessary steps during work.',
     'screenshots.title': 'Discover the Mohasabi Interface',
@@ -338,18 +283,17 @@ export const translations: Record<Locale, Record<TranslationKey, string>> = {
     'requirements.diskSpace': 'Disk Space',
     'requirements.internet': 'Internet Connection',
     'faq.title': 'Frequently Asked Questions',
+    'faq.intro': 'Short answers to the most important questions about Mohasabi.',
     'faq.offline.q': 'Does Mohasabi work offline?',
     'faq.offline.a': 'Yes, the software supports local work without a constant internet connection. Some operations, like downloading the version or getting updates, may require an internet connection.',
-    'faq.os.q': 'What operating system is required?',
-    'faq.os.a': 'The software is designed for Windows, with compatible versions that have been actually verified.',
     'faq.latest.q': 'How do I get the latest version?',
     'faq.latest.a': 'Use the download button on the site to get the installation file from the official GitHub Releases channel, or open the releases page if direct download fails.',
-    'faq.updates.q': 'Does the software update automatically?',
-    'faq.updates.a': 'This depends on the released version. If automatic updates are supported, you will be notified within the software. Otherwise, you can manually download the new version from the releases page.',
     'faq.data.q': 'Is my data stored on a cloud server?',
     'faq.data.a': 'Mohasabi relies on local data storage on your device. There is no cloud sync or automatic external backup unless that is actually part of the product.',
     'faq.support.q': 'Where can I find help or report an issue?',
     'faq.support.a': 'You can visit the Issues page of the official GitHub repository to report issues or request help.',
+    'faq.moreHelp': 'Need more help?',
+    'faq.openTicket': 'Open a ticket on GitHub',
     'cta.title': 'Make Your Daily Business Management More Organized with Mohasabi',
     'cta.subtitle': 'Discover the software and start using daily accounting tools on your Windows device.',
     'cta.downloadBtn': 'Download Mohasabi Now',

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { siteConfig } from '../config/siteConfig';
-import { Globe, Shield, Zap, GitFork } from 'lucide-react';
+import { Globe, GitFork } from 'lucide-react';
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -10,7 +10,7 @@ const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const Footer: React.FC = () => {
-  const { t, locale, setLocale, availableLocales, localeNames } = useLanguage();
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
@@ -35,18 +35,6 @@ export const Footer: React.FC = () => {
       external: true,
       icon: Globe 
     },
-    { 
-      label: t('footer.links.privacy'), 
-      href: siteConfig.contact.issuesUrl, 
-      external: true,
-      icon: Shield 
-    },
-  ];
-
-  const badges = [
-    { icon: Shield, text: 'Données locales' },
-    { icon: Zap, text: 'Fonctionne hors-ligne' },
-    { icon: Globe, text: 'Windows 10/11' },
   ];
 
   return (
@@ -59,9 +47,9 @@ export const Footer: React.FC = () => {
         aria-hidden="true"
       />
 
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-20 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-16 relative z-10">
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 mb-16"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -69,7 +57,7 @@ export const Footer: React.FC = () => {
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }}>
             <motion.a
               href="#home"
-              className="flex items-center gap-2 mb-6"
+              className="flex items-center gap-2 mb-4"
               aria-label={`${siteConfig.app.name} - Home`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -83,27 +71,11 @@ export const Footer: React.FC = () => {
               </motion.div>
               <span className="font-bold text-2xl text-white">{siteConfig.app.name}</span>
             </motion.a>
-            <motion.p className="text-neutral-400 text-base leading-relaxed max-w-xs mb-8">
+            <motion.p className="text-neutral-400 text-base leading-relaxed max-w-xs mb-6">
               {t('footer.description')}
             </motion.p>
             
-            <motion.div className="flex flex-wrap gap-3 mb-8">
-              {badges.map((badge, i) => (
-                <motion.div
-                  key={i}
-                  className="flex items-center gap-2 px-3 py-1.5 bg-neutral-800/50 border border-neutral-700 rounded-xl"
-                  whileHover={{ borderColor: 'var(--color-primary)', backgroundColor: 'rgba(27, 94, 32, 0.2)' }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
-                >
-                  <badge.icon className="w-4 h-4 text-primary" aria-hidden="true" />
-                  <span className="text-sm text-neutral-300">{badge.text}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <motion.div className="flex items-center gap-6">
+            <motion.div className="flex items-center gap-4">
               <motion.a
                 href={siteConfig.github.releasesUrl}
                 target="_blank"
@@ -130,10 +102,10 @@ export const Footer: React.FC = () => {
           </motion.div>
 
           <motion.nav aria-labelledby="footer-nav-title" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
-            <h3 id="footer-nav-title" className="font-semibold text-white mb-4">Navigation</h3>
-            <ul className="space-y-3">
+            <h3 id="footer-nav-title" className="font-semibold text-white mb-4">{t('footer.links.home')}</h3>
+            <ul className="space-y-2">
               {footerLinks.map((link, i) => (
-                <motion.li key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.05, duration: 0.4 }}>
+                <motion.li key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.05, duration: 0.4 }}>
                   <a
                     href={link.href}
                     className="text-neutral-400 hover:text-white transition-colors duration-200"
@@ -146,10 +118,10 @@ export const Footer: React.FC = () => {
           </motion.nav>
 
           <motion.nav aria-labelledby="footer-resources-title" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>
-            <h3 id="footer-resources-title" className="font-semibold text-white mb-4">Ressources</h3>
-            <ul className="space-y-3">
+            <h3 id="footer-resources-title" className="font-semibold text-white mb-4">{t('footer.links.releases')}</h3>
+            <ul className="space-y-2">
               {resourceLinks.map((link, i) => (
-                <motion.li key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.05, duration: 0.4 }}>
+                <motion.li key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.05, duration: 0.4 }}>
                   <motion.a
                     href={link.href}
                     target="_blank"
@@ -164,44 +136,19 @@ export const Footer: React.FC = () => {
               ))}
             </ul>
           </motion.nav>
-
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.5 }}>
-            <h3 className="font-semibold text-white mb-4">{t('language.ar')}</h3>
-            <motion.div className="flex flex-wrap gap-2">
-              {availableLocales.map((loc) => (
-                <motion.button
-                  key={loc}
-                  onClick={() => setLocale(loc)}
-                  className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 ${
-                    locale === loc
-                      ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                      : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700 hover:text-white'
-                  }`}
-                  aria-pressed={locale === loc}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 + availableLocales.indexOf(loc) * 0.05, type: 'spring', stiffness: 260, damping: 20 }}
-                >
-                  {localeNames[loc]}
-                </motion.button>
-              ))}
-            </motion.div>
-          </motion.div>
         </motion.div>
 
         <motion.div
-          className="pt-10 border-t border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
         >
           <motion.p className="text-neutral-500 text-sm">
             &copy; {currentYear} {siteConfig.app.name}. {t('footer.copyright')}
           </motion.p>
 
-          <motion.div className="flex items-center gap-6">
+          <motion.div className="flex items-center gap-4">
             <motion.a
               href={siteConfig.github.releasesUrl}
               target="_blank"
@@ -210,7 +157,7 @@ export const Footer: React.FC = () => {
               aria-label="GitHub"
               whileHover={{ scale: 1.1, y: -2, color: 'white' }}
             >
-              <GithubIcon className="w-6 h-6" aria-hidden="true" />
+              <GithubIcon className="w-5 h-5" aria-hidden="true" />
               <span className="hidden sm:block">GitHub</span>
             </motion.a>
 

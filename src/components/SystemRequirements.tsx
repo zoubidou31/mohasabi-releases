@@ -8,57 +8,45 @@ const requirements = [
     labelKey: 'requirements.os' as const, 
     value: siteConfig.systemRequirements.os,
     icon: Monitor,
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-50',
     status: 'supported',
   },
   { 
     labelKey: 'requirements.architecture' as const, 
     value: siteConfig.systemRequirements.architecture,
     icon: Cpu,
-    color: 'text-emerald-500',
-    bgColor: 'bg-emerald-50',
     status: 'supported',
   },
   { 
     labelKey: 'requirements.processor' as const, 
     value: siteConfig.systemRequirements.processor,
     icon: Cpu,
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-50',
     status: 'recommended',
   },
   { 
     labelKey: 'requirements.ram' as const, 
     value: siteConfig.systemRequirements.ram,
     icon: HardDrive,
-    color: 'text-orange-500',
-    bgColor: 'bg-orange-50',
     status: 'recommended',
   },
   { 
     labelKey: 'requirements.diskSpace' as const, 
     value: siteConfig.systemRequirements.diskSpace,
     icon: HardDrive,
-    color: 'text-pink-500',
-    bgColor: 'bg-pink-50',
     status: 'minimum',
   },
   { 
     labelKey: 'requirements.internet' as const, 
     value: siteConfig.systemRequirements.internet,
     icon: Wifi,
-    color: 'text-indigo-500',
-    bgColor: 'bg-indigo-50',
     status: 'conditional',
   },
 ] as const;
 
 const statusStyles = {
   supported: { badge: 'bg-emerald-100 text-emerald-700', icon: CheckCircle, label: 'Pris en charge' },
-  recommended: { badge: 'bg-blue-100 text-blue-700', icon: CheckCircle, label: 'Recommandé' },
-  minimum: { badge: 'bg-orange-100 text-orange-700', icon: AlertCircle, label: 'Minimum' },
-  conditional: { badge: 'bg-purple-100 text-purple-700', icon: Info, label: 'Conditionnel' },
+  recommended: { badge: 'bg-emerald-100 text-emerald-700', icon: CheckCircle, label: 'Recommandé' },
+  minimum: { badge: 'bg-amber-100 text-amber-700', icon: AlertCircle, label: 'Minimum' },
+  conditional: { badge: 'bg-sky-100 text-sky-700', icon: Info, label: 'Conditionnel' },
 };
 
 export const SystemRequirements: React.FC = () => {
@@ -67,17 +55,9 @@ export const SystemRequirements: React.FC = () => {
   return (
     <section
       id="requirements"
-      className="py-16 md:py-24 bg-white relative overflow-hidden"
+      className="py-16 md:py-24 bg-white"
       aria-labelledby="requirements-title"
     >
-      <motion.div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-primary/5 via-transparent to-transparent"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        aria-hidden="true"
-      />
-
       <div className="container mx-auto px-4 md:px-6 relative">
         <motion.header
           className="text-center mb-12 md:mb-16"
@@ -96,11 +76,11 @@ export const SystemRequirements: React.FC = () => {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
-            Spécifications
+            {t('requirements.title').split(' ')[0]}
           </motion.span>
           <motion.h2
             id="requirements-title"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 leading-tight"
+            className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 leading-tight"
           >
             Configuration <span className="text-primary">requise</span>
           </motion.h2>
@@ -146,10 +126,10 @@ export const SystemRequirements: React.FC = () => {
                         <td className="px-6 py-5">
                           <div className="flex items-center gap-4">
                             <motion.div
-                              className={`flex items-center justify-center w-10 h-10 rounded-xl ${req.bgColor}`}
-                              whileHover={{ scale: 1.1, rotate: 3 }}
+                              className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10"
+                              whileHover={{ scale: 1.1 }}
                             >
-                              <req.icon className={`w-5 h-5 ${req.color}`} aria-hidden="true" />
+                              <req.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                             </motion.div>
                             <div>
                               <p className="font-medium text-neutral-900">{t(req.labelKey)}</p>

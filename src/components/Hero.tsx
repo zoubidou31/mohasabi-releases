@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
 import { siteConfig } from '../config/siteConfig';
-import { Download, ArrowRight, Monitor, Shield, Zap, Globe } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -23,13 +23,6 @@ export const Hero: React.FC = () => {
     }
   };
 
-  const floatingCards = [
-    { icon: Shield, label: '100% Sécurisé', delay: 0 },
-    { icon: Zap, label: 'Hors-ligne', delay: 0.2 },
-    { icon: Globe, label: 'Windows 10/11', delay: 0.4 },
-    { icon: Monitor, label: 'Interface Moderne', delay: 0.6 },
-  ];
-
   return (
     <section
       id="home"
@@ -41,21 +34,6 @@ export const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        aria-hidden="true"
-      />
-
-      <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.3 }}
-        aria-hidden="true"
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
         aria-hidden="true"
       />
 
@@ -142,37 +120,6 @@ export const Hero: React.FC = () => {
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </motion.button>
             </motion.div>
-
-            <motion.div
-              className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 text-sm text-neutral-500 max-w-2xl mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              {[
-                { label: t('hero.version'), value: siteConfig.app.version, icon: Shield },
-                { label: t('hero.size'), value: siteConfig.app.versionSize, icon: Monitor },
-                { label: t('hero.date'), value: siteConfig.app.versionDate, icon: Zap },
-                { label: t('hero.os'), value: 'Windows 10/11', icon: Globe },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="flex flex-col items-center gap-1.5 p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-neutral-200/50 hover:border-primary/30 hover:shadow-md transition-all duration-300"
-                  whileHover={{ y: -4, boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.1)' }}
-                >
-                  <motion.div
-                    className="flex items-center gap-1 text-primary"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.9 + i * 0.1, type: 'spring', stiffness: 260, damping: 20 }}
-                  >
-                    <item.icon className="w-5 h-5" aria-hidden="true" />
-                    <span className="font-medium text-neutral-700">{item.label}</span>
-                  </motion.div>
-                  <span className="font-mono text-primary-dark">{item.value}</span>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -182,13 +129,6 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <div className="relative max-w-xl mx-auto">
-              <motion.div
-                className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 rounded-3xl blur-2xl"
-                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                aria-hidden="true"
-              />
-              
               <motion.div
                 className="relative bg-white rounded-2xl shadow-2xl shadow-neutral-900/10 border border-neutral-200/50 overflow-hidden aspect-[4/3] max-w-xl mx-auto"
                 whileHover={{ y: -8, boxShadow: '0 30px 60px -10px rgb(27 94 32 / 0.2)' }}
@@ -204,40 +144,6 @@ export const Hero: React.FC = () => {
                   height={750}
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" aria-hidden="true" />
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/20 rounded-full blur-3xl"
-                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                aria-hidden="true"
-              />
-              <motion.div
-                className="absolute -top-6 -left-6 w-28 h-28 bg-primary/10 rounded-full blur-3xl"
-                animate={{ scale: [1, 1.08, 1], opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                aria-hidden="true"
-              />
-
-              <motion.div
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
-              >
-                {floatingCards.map((card, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl border border-neutral-200/50 shadow-lg shadow-neutral-900/5"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 + i * 0.1, type: 'spring', stiffness: 260, damping: 20 }}
-                    whileHover={{ scale: 1.05, boxShadow: '0 15px 30px -5px rgb(0 0 0 / 0.15)' }}
-                  >
-                    <card.icon className="w-5 h-5 text-primary" aria-hidden="true" />
-                    <span className="text-sm font-medium text-neutral-700">{card.label}</span>
-                  </motion.div>
-                ))}
               </motion.div>
             </div>
           </motion.div>

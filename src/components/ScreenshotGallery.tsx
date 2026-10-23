@@ -9,6 +9,15 @@ export const ScreenshotGallery: React.FC = () => {
   const { t } = useLanguage();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
+  const screenshots = siteConfig.assets.screenshots;
+
+  // Check if screenshots are real images (not SVG placeholders)
+  const hasRealScreenshots = screenshots.some(s => !s.src.endsWith('.svg'));
+
+  if (!hasRealScreenshots) {
+    return null;
+  }
+
   const openLightbox = (index: number) => {
     setSelectedIndex(index);
     document.body.style.overflow = 'hidden';
@@ -21,7 +30,6 @@ export const ScreenshotGallery: React.FC = () => {
 
   const navigate = (direction: 'prev' | 'next') => {
     if (selectedIndex === null) return;
-    const screenshots = siteConfig.assets.screenshots;
     const newIndex = direction === 'prev' 
       ? (selectedIndex - 1 + screenshots.length) % screenshots.length
       : (selectedIndex + 1) % screenshots.length;
@@ -38,8 +46,6 @@ export const ScreenshotGallery: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedIndex]);
-
-  const screenshots = siteConfig.assets.screenshots;
 
   return (
     <section

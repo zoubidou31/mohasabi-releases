@@ -68,7 +68,7 @@ export const siteConfig: SiteConfig = {
     issuesUrl: 'https://github.com/zoubidou31/mohasabi-releases/issues',
   },
   assets: {
-    logo: '/assets/logo.svg',
+    logo: '/assets/logo.png',
     heroScreenshot: '/assets/screenshots/hero.svg',
     screenshots: [
       { src: '/assets/screenshots/dashboard.svg', alt: 'screenshots.alt.dashboard', title: 'screenshots.alt.dashboard' },
