@@ -1,151 +1,66 @@
-# Mohasabi Landing Page
+# Mohasabi Desktop — Official Releases & Distribution
+# مستودع إصدارات وتوزيع برنامج محاسبي المكتبي
 
-صفحة هبوط رسمية لبرنامج Mohasabi المحاسبي المكتبي - مبنية بـ React + TypeScript + Vite + Tailwind CSS.
+المستودع الرسمي المخصص لاستضافة وتوزيع مثبتات برنامج **Mohasabi** المكتبي وملفات التحديث والتحقق من الإصدارات.
 
-## المميزات
+> **ملاحظة هامة:** الكود المصدري للموقع الرسمي وصفحة الهبوط يقع حصراً في المستودع المخصص:  
+> [https://github.com/zoubidou31/mohasabi-landing-page](https://github.com/zoubidou31/mohasabi-landing-page)  
+> الموقع الرسمي: [https://mohasabi.pages.dev/](https://mohasabi.pages.dev/)
 
-- **دعم متعدد اللغات**: العربية (RTL)، الفرنسية، الإنجليزية
-- **تصميم متجاوب**: يعمل على الهواتف، الأجهزة اللوحية، وأجهزة سطح المكتب
-- **أداء عالي**: محسّن للسرعة مع Tailwind CSS و Vite
-- **سهولة الوصول (Accessibility)**: متوافق مع معايير WCAG
-- **SEO محسّن**: Meta tags، Open Graph، بيانات منظمة
-- **جاهز للنشر**: مُعد للنشر على GitHub Pages
+---
 
-## متطلبات التشغيل
+## 📦 الإصدارات المتاحة للتحميل (Official Releases)
 
-- Node.js 18+
-- npm 9+
+### 🔹 الإصدار v1.0.3 (أحدث إصدار رسمي - مستقر)
+- **ملف التثبيت:** `Mohasabi_Setup_v1.0.3.exe`
+- **الحجم:** ~300 ميجابايت (314,271,095 بايت)
+- **تاريخ الإصدار:** 19 أكتوبر 2026
+- **رابط التحميل المباشر:**  
+  [تحميل Mohasabi v1.0.3](https://github.com/zoubidou31/mohasabi-releases/releases/download/v1.0.3/Mohasabi_Setup_v1.0.3.exe)
+- **بصمة التحقق (SHA-256):**  
+  `37EF66E129173094D522761876DD94E4535EB776134E64D6A394AEB1AE3BCE05`
+- **ملف بيانات الإصدار:** [`version.json`](./version.json)
+- **أبرز التحديثات:**
+  - ربط الترخيص بالمعرّف المادي للجهاز (Machine ID) لمنع النسخ غير المصرح به.
+  - واجهة ثلاثية اللغات بالكامل: العربية (RTL)، الفرنسية (LTR)، والإنجليزية (LTR).
+  - ضبط شامل لعمليات الإدخال الحسابية والمبالغ والتواريخ ومنع الأرقام السالبة.
+  - دعم كامل لبيانات الحساب البريدي الجاري (Algérie Poste CCP / RIP) والبنوك الجزائرية.
 
-## التثبيت والتشغيل المحلي
+---
 
-```bash
-# تثبيت التبعيات
-npm install
+### 🔹 الإصدار v1.0.2 (إصدار سابق)
+- **ملف التثبيت:** `Mohasabi_Setup_v1.0.2.exe`
+- **الحجم:** ~300 ميجابايت (314,117,426 بايت)
+- **تاريخ الإصدار:** 17 أكتوبر 2026
+- **رابط التحميل المباشر:**  
+  [تحميل Mohasabi v1.0.2](https://github.com/zoubidou31/mohasabi-releases/releases/download/v1.0.2/Mohasabi_Setup_v1.0.2.exe)
+- **بصمة التحقق (SHA-256):**  
+  `60F9E55D8808866ABED9520974702231413BE1ECF868A73FA087F9C9DD797292`
 
-# تشغيل خادم التطوير
-npm run dev
+---
 
-# بناء المشروع للإنتاج
-npm run build
+## 🔒 كيفية التحقق من سلامة وأصالة الملف (SHA-256 Verification)
 
-# معاينة البناء المحلي
-npm run preview
+للتأكد من أن ملف التثبيت لم يتعرض لأي تعديل أو تلف أثناء التحميل، يمكنك فحص بصمة التجزئة في نظام Windows عبر PowerShell:
+
+```powershell
+Get-FileHash -Algorithm SHA256 .\Mohasabi_Setup_v1.0.3.exe
 ```
 
-## النشر على GitHub Pages
+يجب أن تطابق النتيجة بصمة التجزئة الرسمية المذكورة أعلاه.
 
-### 1. تحديث إعدادات المشروع
+---
 
-قبل النشر، يجب تحديث الملف `src/config/siteConfig.ts` بالبيانات الحقيقية:
+## 💻 متطلبات تشغيل البرنامج (System Requirements)
 
-```typescript
-github: {
-  owner: 'YOUR_GITHUB_USERNAME',     // استبدل باسم مستخدم GitHub الخاص بك
-  repo: 'YOUR_REPO_NAME',            // استبدل باسم المستودع
-  releasesUrl: 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/releases',
-  setupAssetName: 'Mohasabi-Setup.exe', // اسم ملف التثبيت الفعلي في GitHub Releases
-},
-download: {
-  directUrl: 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/releases/latest/download/Mohasabi-Setup.exe',
-  fallbackUrl: 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/releases',
-},
-```
+- **نظام التشغيل:** Windows 10 أو Windows 11 (معمارية 64-bit).
+- **المعالج:** معالج ثنائي النواة بسرعة 2.0 GHz أو أعلى (Intel Core i3 أو AMD Ryzen 3 وما يعادلهما).
+- **الذاكرة العشوائية (RAM):** 4 GB كحد أدنى (يوصى بـ 8 GB لتجربة سلسة مع قواعد البيانات الكبيرة).
+- **مساحة التخزين:** 500 MB مساحة فارغة على القرص الصلب.
+- **الشاشة:** دقة عرض 1366 × 768 أو أعلى.
 
-### 2. تحديث index.html
+---
 
-استبدل `GITHUB_OWNER` و `GITHUB_REPO` في `index.html` بالقيم الحقيقية:
+## 📄 حقوق الاستخدام والملكية
 
-```html
-<link rel="canonical" href="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/" />
-<meta property="og:url" content="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/" />
-```
-
-### 3. إعداد GitHub Pages
-
-1. اذهب إلى Settings > Pages في مستودع GitHub
-2. اختر Source: "GitHub Actions"
-3. سيتم النشر تلقائياً عند كل push للفرع الرئيسي
-
-### 4. GitHub Actions Workflow
-
-تم تضمين ملف workflow في `.github/workflows/deploy.yml` للنشر التلقائي.
-
-## هيكل المشروع
-
-```
-src/
-├── components/          # مكونات الواجهة
-│   ├── Header.tsx       # شريط التنقل
-│   ├── Hero.tsx         # القسم الرئيسي
-│   ├── TrustHighlights.tsx  # مميزات الثقة
-│   ├── Features.tsx     # المميزات التفصيلية
-│   ├── ScreenshotGallery.tsx  # معرض لقطات الشاشة
-│   ├── HowItWorks.tsx   # خطوات الاستخدام
-│   ├── SystemRequirements.tsx  # متطلبات النظام
-│   ├── FAQ.tsx          # الأسئلة الشائعة
-│   ├── DownloadCTA.tsx  # زر التحميل النهائي
-│   └── Footer.tsx       # التذييل
-├── config/
-│   └── siteConfig.ts    # إعدادات الموقع المركزية
-├── i18n/
-│   ├── translations.ts  # الترجمات (ar, fr, en)
-│   └── LanguageContext.tsx  # سياق اللغة و RTL
-├── App.tsx              # المكون الرئيسي
-├── main.tsx             # نقطة الدخول
-└── index.css            # أنماط Tailwind والأنماط المخصصة
-```
-
-## استبدال الأصول (Assets)
-
-ضع الصور الحقيقية في مجلد `public/assets/images/` مع الأسماء التالية:
-
-- `logo.svg` - شعار البرنامج
-- `hero-screenshot.svg` - لقطة الشاشة الرئيسية في قسم Hero
-- `screenshot-1.svg` إلى `screenshot-4.svg` - لقطات المعرض
-- `og-image.svg` - صورة المشاركة الاجتماعية (1200x630)
-
-## القيم المطلوب استبدالها قبل النشر
-
-| القيمة | الوصف | الملف |
-|----------|---------|-------|
-| `GITHUB_OWNER` | اسم مستخدم/منظمة GitHub | `siteConfig.ts`, `index.html` |
-| `GITHUB_REPO` | اسم المستودع | `siteConfig.ts`, `index.html` |
-| `Mohasabi-Setup.exe` | اسم ملف التثبيت الفعلي | `siteConfig.ts` |
-| متطلبات النظام | القيم الحقيقية المختبرة | `siteConfig.ts` |
-| معلومات التواصل | روابط الدعم الفعلية | `siteConfig.ts` |
-| الصور | لقطات شاشة حقيقية للبرنامج | `public/assets/images/` |
-
-## السكريبتات المتاحة
-
-| الأمر | الوصف |
-|-------|---------|
-| `npm run dev` | تشغيل خادم التطوير |
-| `npm run build` | بناء للإنتاج |
-| `npm run preview` | معاينة البناء |
-| `npm run lint` | فحص الكود (إذا مُعد) |
-
-## التقنيات المستخدمة
-
-- **React 18** - مكتبة واجهة المستخدم
-- **TypeScript** - الكتابة الثابتة
-- **Vite** - أداة البناء السريعة
-- **Tailwind CSS** - إطار عمل CSS
-- **GitHub Actions** - النشر التلقائي
-
-## الترخيص
-
-هذا المشروع مخصص لبرنامج Mohasabi. جميع الحقوق محفوظة.
-
-## المساهمة
-
-للمساهمة في تطوير صفحة الهبوط:
-
-1. Fork المستودع
-2. أنشئ فرع للميزة (`git checkout -b feature/amazing-feature`)
-3. Commit التغييرات (`git commit -m 'Add amazing feature'`)
-4. Push للفرع (`git push origin feature/amazing-feature`)
-5. افتح Pull Request
-
-## الدعم
-
-للإبلاغ عن مشاكل أو طلب ميزات، يرجى فتح Issue في مستودع GitHub الرسمي.
+برنامج Mohasabi وجميع أصوله وعلاماته التجارية مملوكة رسمياً. جميع الحقوق محفوظة © 2026.
